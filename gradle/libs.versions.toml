@@ -17,11 +17,13 @@ paging = "3.2.1"
 retrofit = "2.9.0"
 okhttp = "4.10.0"
 moshi = "1.15.0"
+legacy-support-v4 = "1.0.0"
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlin"  }
 ksp = { id = "com.google.devtools.ksp", version = "1.9.21-1.0.15" }
 navigation-safe-args = "androidx.navigation.safeargs:2.7.7"
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
@@ -62,3 +64,4 @@ moshi-core = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 
 timber = "com.jakewharton.timber:timber:5.0.1"
+legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support-v4" }
