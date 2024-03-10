@@ -1,41 +1,24 @@
 package com.zedan.dru.movieapp.components.page
 
-import androidx.annotation.VisibleForTesting
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import androidx.paging.LoadState.NotLoading
 import androidx.paging.LoadState.Loading
+import androidx.paging.LoadState.NotLoading
 import androidx.paging.LoadStates
-import androidx.paging.PagingSource.LoadResult.Error
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.scan
-import androidx.paging.PagingDataAdapter
-import androidx.paging.RemoteMediator
-import androidx.paging.PagingSource
-import androidx.paging.LoadType.REFRESH
 import androidx.paging.LoadType
+import androidx.paging.LoadType.REFRESH
+import androidx.paging.PagingSource
+import androidx.paging.PagingSource.LoadResult.Error
+import androidx.paging.RemoteMediator
 import com.zedan.dru.movieapp.components.page.MergedState.NOT_LOADING
-import com.zedan.dru.movieapp.components.page.MergedState.REMOTE_STARTED
 import com.zedan.dru.movieapp.components.page.MergedState.REMOTE_ERROR
+import com.zedan.dru.movieapp.components.page.MergedState.REMOTE_STARTED
 import com.zedan.dru.movieapp.components.page.MergedState.SOURCE_ERROR
 import com.zedan.dru.movieapp.components.page.MergedState.SOURCE_LOADING
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.scan
 
 
-/**
- * Converts the raw [CombinedLoadStates] [Flow] from [PagingDataAdapter.loadStateFlow] into a new
- * [Flow] of [CombinedLoadStates] that track [CombinedLoadStates.mediator] states as they are
- * synchronously applied in the UI. Any [Loading] state triggered by [RemoteMediator] will only
- * transition back to [NotLoading] after the fetched items have been synchronously shown in UI by a
- * successful [PagingSource] load of type [REFRESH].
- *
- * Note: This class assumes that the [RemoteMediator] implementation always invalidates
- * [PagingSource] on a successful fetch, even if no data was modified (which Room does by default).
- * Using this class without this guarantee can cause [LoadState] to get indefinitely stuck as
- * [Loading] in cases where invalidation doesn't happen because the fetched network data represents
- * exactly what is already cached in DB.
- */
-@OptIn(ExperimentalCoroutinesApi::class)
 fun Flow<CombinedLoadStates>.asMergedLoadStates(): Flow<LoadStates> {
     val syncRemoteState = LoadStatesMerger()
     return scan(syncRemoteState.toLoadStates()) { _, combinedLoadStates ->
@@ -117,28 +100,28 @@ private class LoadStatesMerger {
         return when (currentMergedState) {
             NOT_LOADING -> when (remoteState) {
                 is Loading -> Loading to REMOTE_STARTED
-                is Error<*, *> -> remoteState to REMOTE_ERROR
+                is LoadState.Error -> remoteState to REMOTE_ERROR
                 else -> NotLoading(remoteState.endOfPaginationReached) to NOT_LOADING
             }
             REMOTE_STARTED -> when {
-                remoteState is Error<*, *> -> remoteState to REMOTE_ERROR
+                remoteState is LoadState.Error -> remoteState to REMOTE_ERROR
                 sourceRefreshState is Loading -> Loading to SOURCE_LOADING
                 else -> Loading to REMOTE_STARTED
             }
             REMOTE_ERROR -> when (remoteState) {
-                is Error<*, *> -> remoteState to REMOTE_ERROR
+                is LoadState.Error -> remoteState to REMOTE_ERROR
                 else -> Loading to REMOTE_STARTED
             }
             SOURCE_LOADING -> when {
-                sourceRefreshState is Error<*, *> -> sourceRefreshState to SOURCE_ERROR
-                remoteState is Error<*, *> -> remoteState to REMOTE_ERROR
+                sourceRefreshState is LoadState.Error-> sourceRefreshState to SOURCE_ERROR
+                remoteState is LoadState.Error -> remoteState to REMOTE_ERROR
                 sourceRefreshState is NotLoading -> {
                     NotLoading(remoteState.endOfPaginationReached) to NOT_LOADING
                 }
                 else -> Loading to SOURCE_LOADING
             }
             SOURCE_ERROR -> when (sourceRefreshState) {
-                is Error<*, *> -> sourceRefreshState to SOURCE_ERROR
+                is LoadState.Error -> sourceRefreshState to SOURCE_ERROR
                 else -> sourceRefreshState to SOURCE_LOADING
             }
         }

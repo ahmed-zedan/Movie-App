@@ -29,9 +29,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:move_to="@{viewModel.moveToPosition}"
-            app:show="@{viewModel.showList}"
+            app:move_to="@{viewModel.viewState.position}"
+            app:show="@{viewModel.viewState.showList}"
             app:spanCount="2"
+            app:spanSizeLookup="@{viewModel.spanSizeLookup}"
             tools:listitem="@layout/fragment_movie_list_item_raw" />
 
 
@@ -45,7 +46,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:show="@{viewModel.loading}"
+            app:show="@{viewModel.viewState.loading}"
             app:trackColor="?colorPrimary" />
+
+        <com.zedan.dru.movieapp.components.widget.ErrorView
+            android:id="@+id/error_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:error="@{viewModel.viewState.error}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onRetryClick="@{() -> viewModel.onRetry()}"
+            app:show="@{viewModel.viewState.error != null}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

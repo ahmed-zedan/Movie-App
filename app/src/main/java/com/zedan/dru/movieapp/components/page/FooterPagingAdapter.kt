@@ -15,6 +15,15 @@ class FooterPagingAdapter(
     private val retry: () -> Unit,
 ) : LoadStateAdapter<FooterPagingAdapter.FooterPagingViewHolder>() {
 
+    companion object{
+        const val STATE_NOT_LOADING = -4
+        const val STATE_BUSY = -1
+    }
+
+    override fun getStateViewType(loadState: LoadState): Int {
+        return if (loadState is LoadState.NotLoading) STATE_NOT_LOADING else STATE_BUSY
+    }
+
     override fun onBindViewHolder(holder: FooterPagingViewHolder, loadState: LoadState) {
         holder.bind(loadState)
     }

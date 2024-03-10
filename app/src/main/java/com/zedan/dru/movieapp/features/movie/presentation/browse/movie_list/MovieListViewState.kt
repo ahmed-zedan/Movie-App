@@ -1,19 +1,19 @@
 package com.zedan.dru.movieapp.features.movie.presentation.browse.movie_list
 
 import com.zedan.dru.movieapp.components.resources.TextResource
+import com.zedan.dru.movieapp.components.utils.Event
 
 data class MovieListViewState(
-    val loading: Boolean,
+    val loading: Boolean = true,
     val showList: Boolean,
-    val showEmpty: Boolean,
     val error: TextResource?,
+    val position: Event<Int>? = null,
 ) {
     companion object {
         val EMPTY
             get() = MovieListViewState(
                 loading = false,
                 showList = false,
-                showEmpty = false,
                 error = null,
             )
     }
@@ -24,7 +24,6 @@ fun MovieListViewState.loading() =
     this.copy(
         loading = true,
         showList = false,
-        showEmpty = false,
         error = null,
     )
 
@@ -32,25 +31,14 @@ fun MovieListViewState.error(error: TextResource) =
     this.copy(
         loading = false,
         showList = false,
-        showEmpty = false,
         error = error,
     )
 
-
-fun MovieListViewState.empty() =
-    this.copy(
-        loading = false,
-        showList = false,
-        showEmpty = true,
-        error = null
-    )
 
 fun MovieListViewState.data() =
     this.copy(
         loading = false,
         showList = true,
-        showEmpty = false,
         error = null,
+        position = Event(0)
     )
-
-

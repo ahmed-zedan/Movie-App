@@ -9,11 +9,15 @@ class MovieListEventProcessor(val fragment: Fragment) {
     fun process(event: MovieListViewEvent) {
         when (event) {
             is MovieListViewEvent.Movie ->
-                fragment.findNavController()
-                    .navigate(
-                        R.id.movieDetailsFragment,
-                        MovieDetailsFragmentArgs.Builder(event.id).build().toBundle()
-                    )
+                navigateToDetail(event.id)
         }
+    }
+
+    private fun navigateToDetail(id: Int) {
+        fragment.findNavController()
+            .navigate(
+                R.id.movieDetailsFragment,
+                MovieDetailsFragmentArgs.Builder(id).build().toBundle()
+            )
     }
 }
