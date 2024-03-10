@@ -29,7 +29,23 @@ fun Movie.toEntity() = MovieEntity(
     originalTitle = this.originalTitle,
     overview = this.overview,
     popularity = this.popularity,
-    posterPath = this.posterPath,
+    posterPath = "https://image.tmdb.org/t/p/w500" + this.posterPath,
+    releaseDate = this.releaseDate,
+    title = this.title,
+    video = this.video,
+    voteAverage = this.voteAverage,
+    voteCount = this.voteCount
+)
+
+fun MovieListModelResponse.toEntity() = MovieEntity(
+    adult = this.adult,
+    backdropPath = this.backdropPath,
+    id = this.id,
+    originalLanguage = this.originalLanguage,
+    originalTitle = this.originalTitle,
+    overview = this.overview,
+    popularity = this.popularity,
+    posterPath = "https://image.tmdb.org/t/p/w500" + this.posterPath,
     releaseDate = this.releaseDate,
     title = this.title,
     video = this.video,

@@ -47,18 +47,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:show="@{viewModel.loading}"
             app:trackColor="?colorPrimary" />
-
-        <!--        <com.zedan.dru.movieapp.components.widget.ErrorView-->
-        <!--            android:id="@+id/error_view"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:padding="@dimen/medium_space"-->
-        <!--            app:error="@{viewModel.viewState.error}"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:show="@{viewModel.viewState.error != null}" />-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -4,4 +4,11 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10%</item>
     </style>
+
+
+    <style name="ShapeAppearanceOverlay.MovieApp.Round.Bottom" parent="" >
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">10%</item>
+        <item name="cornerSizeBottomRight">10%</item>
+    </style>
 </resources>

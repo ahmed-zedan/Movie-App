@@ -11,13 +11,16 @@ import com.zedan.dru.movieapp.components.page.FooterPagingAdapter
 import com.zedan.dru.movieapp.components.page.asMergedLoadStates
 import com.zedan.dru.movieapp.components.utils.Event
 import com.zedan.dru.movieapp.features.movie.data.invoke
+import com.zedan.dru.movieapp.features.movie.domain.entities.MovieEntity
 import com.zedan.dru.movieapp.features.movie.domain.usecases.GetMoviesListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +28,6 @@ import javax.inject.Inject
 class MovieListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     getMoviesUseCase: GetMoviesListUseCase,
-    private val errorMapper: ErrorMapper,
 ) : ViewModel() {
     private val args: MovieListFragmentArgs
         get() = savedStateHandle[MovieListFragmentArgs.ARGS_KEY]!!
@@ -33,11 +35,14 @@ class MovieListViewModel @Inject constructor(
     private val movies = getMoviesUseCase.invoke(args.category)
         .cachedIn(viewModelScope)
 
-    private val moviesAdapter by lazy { MovieListAdapter() }
+    private val moviesAdapter by lazy { MovieListAdapter(MovieListItemListener()) }
     private val footerAdapter by lazy { FooterPagingAdapter(moviesAdapter::retry) }
     val adapter by lazy {
         moviesAdapter.withLoadStateFooter(footerAdapter)
     }
+
+    private val _eventState = Channel<MovieListViewEvent>()
+    val eventState get() = _eventState.receiveAsFlow()
 
     private val _loading = MutableStateFlow(true)
     val loading get() = _loading.asStateFlow()
@@ -78,6 +83,14 @@ class MovieListViewModel @Inject constructor(
                     _showList.value = true
                     _moveToPosition.value = Event(0)
                 }
+        }
+    }
+
+    private inner class MovieListItemListener : MovieListViewHolder.Listener {
+        override fun onMovieClick(movie: MovieEntity) {
+            viewModelScope.launch {
+                _eventState.send(MovieListViewEvent.Movie(movie.id))
+            }
         }
     }
 }

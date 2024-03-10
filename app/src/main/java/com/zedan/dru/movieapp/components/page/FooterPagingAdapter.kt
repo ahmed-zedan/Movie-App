@@ -33,7 +33,7 @@ class FooterPagingAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.errorView.onRetryClick(retry)
+            binding.errorView.setOnRetryClick(retry)
         }
 
         fun bind(loadState: LoadState) {

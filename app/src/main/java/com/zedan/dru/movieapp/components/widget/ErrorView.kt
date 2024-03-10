@@ -18,7 +18,7 @@ class ErrorView @JvmOverloads constructor(
     private val root = ErrorViewBinding.inflate(LayoutInflater.from(context), this)
 
 
-    fun onRetryClick(retry: () -> Unit) {
+    fun setOnRetryClick(retry: () -> Unit) {
         this.root.retryBtn.onClick { retry() }
     }
 

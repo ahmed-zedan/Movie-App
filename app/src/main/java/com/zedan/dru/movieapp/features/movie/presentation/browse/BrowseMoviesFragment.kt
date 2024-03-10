@@ -15,7 +15,7 @@ class BrowseMoviesFragment : Fragment() {
 
     private val viewModel: BrowseMoviesViewModel by viewModels()
 
-    private val renderer by lazy { BrowseMoviesViewRenderer(FragmentViewPagerAdapter(this)) }
+    private val renderer by lazy { BrowseMoviesViewRenderer((this)) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
