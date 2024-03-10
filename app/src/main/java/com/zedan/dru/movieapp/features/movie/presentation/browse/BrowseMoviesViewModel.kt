@@ -3,7 +3,7 @@ package com.zedan.dru.movieapp.features.movie.presentation.browse
 import androidx.lifecycle.ViewModel
 import com.zedan.dru.movieapp.R
 import com.zedan.dru.movieapp.components.resources.TextResource
-import com.zedan.dru.movieapp.features.movie.presentation.browse.movie_list.MovieCategory
+import com.zedan.dru.movieapp.features.movie.domain.entities.MovieCategory
 import com.zedan.dru.movieapp.features.movie.presentation.browse.movie_list.MovieListFragment
 import com.zedan.dru.movieapp.features.movie.presentation.browse.movie_list.MovieListFragmentArgs
 import dagger.hilt.android.lifecycle.HiltViewModel

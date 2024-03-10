@@ -91,6 +91,9 @@ dependencies {
     implementation(libs.dagger.hilt.android.core)
     kapt(libs.dagger.hilt.android.compiler)
 
+
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
     implementation(libs.timber)
 
     testImplementation(libs.junit)

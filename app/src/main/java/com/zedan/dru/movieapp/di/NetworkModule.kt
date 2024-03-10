@@ -85,7 +85,7 @@ object NetworkModuleProvider {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://api.themoviedb.org/3")
+            .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(converterFactory)
             .build()
     }
