@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spaces -->
+    <dimen name="space">@dimen/_1sdp</dimen>
+    <dimen name="small_space">@dimen/_2sdp</dimen>
+    <dimen name="small_space_x2">@dimen/_3sdp</dimen>
+    <dimen name="small_space_x3">@dimen/_4sdp</dimen>
+    <dimen name="small_space_x4">@dimen/_6sdp</dimen>
+    <dimen name="small_space_x5">@dimen/_8sdp</dimen>
+    <dimen name="small_space_x6">@dimen/_10sdp</dimen>
+    <dimen name="medium_space">@dimen/_11sdp</dimen>
+    <dimen name="medium_space_x1">@dimen/_13sdp</dimen>
+    <dimen name="medium_space_x2">@dimen/_15sdp</dimen>
+    <dimen name="medium_space_x3">@dimen/_18sdp</dimen>
+    <dimen name="medium_space_x4">@dimen/_20sdp</dimen>
+    <dimen name="medium_space_x5">@dimen/_23sdp</dimen>
+    <dimen name="medium_space_x6">@dimen/_26sdp</dimen>
+    <dimen name="large_space">@dimen/_30sdp</dimen>
+    <dimen name="large_space_x1">@dimen/_35sdp</dimen>
+    <dimen name="large_space_x2">@dimen/_39sdp</dimen>
+    <dimen name="large_space_x3">@dimen/_45sdp</dimen>
+    <dimen name="large_space_x4">@dimen/_52sdp</dimen>
+    <dimen name="large_space_x5">@dimen/_59sdp</dimen>
+    <dimen name="large_space_x6">@dimen/_66sdp</dimen>
+    <dimen name="xlarge_space">@dimen/_74sdp</dimen>
+    <dimen name="xlarge_space_x1">@dimen/_82sdp</dimen>
+    <dimen name="xlarge_space_x2">@dimen/_89sdp</dimen>
+    <dimen name="xlarge_space_x3">@dimen/_96sdp</dimen>
+    <dimen name="xlarge_space_x4">@dimen/_104sdp</dimen>
+
+
+    <!-- Text Sizes -->
+    <dimen name="h4_txt_size">@dimen/_17ssp</dimen>
+    <dimen name="h6_txt_size">@dimen/_13ssp</dimen>
+    <dimen name="h7_txt_size">@dimen/_12ssp</dimen>
+    <dimen name="h8_txt_size">@dimen/_10ssp</dimen>
+    <dimen name="regular_txt_size">@dimen/_11ssp</dimen>
+    <dimen name="regular_x1_txt_size">@dimen/_12ssp</dimen>
+    <dimen name="regular_x2_txt_size">@dimen/_13ssp</dimen>
+    <dimen name="regular_x3_txt_size">@dimen/_14ssp</dimen>
+    <dimen name="regular_x4_txt_size">@dimen/_15ssp</dimen>
+    <dimen name="regular_x5_txt_size">@dimen/_16ssp</dimen>
+    <dimen name="regular_x6_txt_size">@dimen/_17ssp</dimen>
+    <dimen name="large_txt_size">@dimen/_18ssp</dimen>
+
+</resources>

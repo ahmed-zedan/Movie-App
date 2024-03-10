@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.navigation.safe.args)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.kapt)
@@ -62,6 +63,7 @@ dependencies {
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.legacy.support.v4)
     ksp(libs.androidx.room.compiler)
 
 
@@ -89,6 +91,9 @@ dependencies {
     implementation(libs.dagger.hilt.android.core)
     kapt(libs.dagger.hilt.android.compiler)
 
+
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
     implementation(libs.timber)
 
     testImplementation(libs.junit)

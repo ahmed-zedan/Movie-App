@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spaces -->
+    <dimen name="small_space_x3">9dp</dimen>
+    <dimen name="small_space_x4">11.50dp</dimen>
+    <dimen name="small_space_x5">16dp</dimen>
+    <dimen name="small_space_x6">18dp</dimen>
+    <dimen name="medium_space">20dp</dimen>
+    <dimen name="medium_space_x1">22dp</dimen>
+    <dimen name="medium_space_x2">24dp</dimen>
+    <dimen name="medium_space_x3">28dp</dimen>
+    <dimen name="medium_space_x4">32dp</dimen>
+    <dimen name="medium_space_x5">36dp</dimen>
+    <dimen name="medium_space_x6">40dp</dimen>
+    <dimen name="large_space">46dp</dimen>
+    <dimen name="large_space_x1">52dp</dimen>
+    <dimen name="large_space_x2">58dp</dimen>
+    <dimen name="large_space_x3">66dp</dimen>
+    <dimen name="large_space_x4">76dp</dimen>
+    <dimen name="large_space_x5">86dp</dimen>
+    <dimen name="large_space_x6">96dp</dimen>
+    <dimen name="xlarge_space">106dp</dimen>
+    <dimen name="xlarge_space_x1">116dp</dimen>
+    <dimen name="xlarge_space_x2">126dp</dimen>
+    <dimen name="xlarge_space_x3">136dp</dimen>
+    <dimen name="xlarge_space_x4">146dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="h4_txt_size">26sp</dimen>
+    <dimen name="h6_txt_size">20sp</dimen>
+    <dimen name="h7_txt_size">18sp</dimen>
+    <dimen name="h8_txt_size">16sp</dimen>
+    <dimen name="regular_txt_size">19sp</dimen>
+    <dimen name="regular_x1_txt_size">20sp</dimen>
+    <dimen name="regular_x2_txt_size">21.50sp</dimen>
+    <dimen name="regular_x3_txt_size">23sp</dimen>
+    <dimen name="regular_x4_txt_size">24.50sp</dimen>
+    <dimen name="regular_x5_txt_size">26sp</dimen>
+    <dimen name="regular_x6_txt_size">27.50sp</dimen>
+    <dimen name="large_txt_size">29sp</dimen>
+
+</resources>
